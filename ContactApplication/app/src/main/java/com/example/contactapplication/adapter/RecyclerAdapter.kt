@@ -2,19 +2,18 @@ package com.example.contactapplication
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.contactapplication.data.Contacts
 import com.example.contactapplication.databinding.RvContactListResourceBinding
 
 class RecyclerAdapter(
-    private val contact: ArrayList<Contacts>,
+    private val contact: List<Contacts>,
     private val context: Context,
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
+    val contList = ArrayList<Contacts>()
 
     class ViewHolder(private val contactBinding: RvContactListResourceBinding) :
         RecyclerView.ViewHolder(contactBinding.root) {
@@ -26,11 +25,11 @@ class RecyclerAdapter(
         }
 
 
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val view = RvContactListResourceBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val view =
+            RvContactListResourceBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(view)
     }
 
@@ -42,5 +41,7 @@ class RecyclerAdapter(
         (holder as ViewHolder).bind(contact[position])
     }
 
+    fun updateList(newList: List<Contacts>) {
 
+    }
 }
